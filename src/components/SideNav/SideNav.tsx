@@ -1,64 +1,65 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Footer, Logo, Menu, Nav } from './SideNav.styles';
-import { PATH } from 'src/constants/paths';
-// import home from 'src/assets/images/home.svg';
-// import list from 'src/assets/images/list.svg';
-import { connect, ConnectedProps } from 'react-redux';
 
-const mapStateToProps = (state) => ({
-  closeSideNav: state.app.closeSideNav
-});
-
-const mapDispatchToProps = {};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-type Props = ConnectedProps<typeof connector>;
-
-function SideNav(props: Props) {
-  const { closeSideNav } = props;
-  return (
-    <Nav className={closeSideNav ? 'close' : ''}>
-      <h1>
-        <Logo
-          href="https://xdevclass.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white"
-        >
-          X
-        </Logo>
-      </h1>
-      <Menu className="list-unstyled mb-5">
-        <li>
-          <NavLink exact to={PATH.HOME}>
-            {/*<img src={home} alt="" />*/}
-            <span>Home</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={PATH.PRODUCT}>
-            {/*<img src={list} alt="" />*/}
-            <span>Product</span>
-          </NavLink>
-        </li>
-      </Menu>
-      <Footer>
-        <p>
-          Copyright ©{new Date().getFullYear()} All rights reserved | This template is made with by
-          <a
-            href="https://xdevclass.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-1 text-white"
-          >
-            XdevClass
-          </a>
-        </p>
-      </Footer>
-    </Nav>
-  );
+interface Props {
+  fixed?: boolean;
 }
 
-export default connector(SideNav);
+const SideNav = (props: Props) => {
+  const [navbarOpen, setNavbarOpen] = React.useState(false);
+  return (
+    <>
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-orange-500 mb-3">
+        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+            <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
+              Beyound Infinite
+            </a>
+            <button
+              className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+              type="button"
+              onClick={() => setNavbarOpen(!navbarOpen)}
+            >
+              <i className="fas fa-bars"></i>
+            </button>
+          </div>
+          <div
+            className={'lg:flex flex-grow items-center' + (navbarOpen ? ' flex' : ' hidden')}
+            id="example-navbar-danger"
+          >
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+              <li className="nav-item">
+                <a
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  href="#pablo"
+                >
+                  <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
+                  <span className="ml-2">Share</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  href="#pablo"
+                >
+                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
+                  <span className="ml-2">Tweet</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  href="#pablo"
+                >
+                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i>
+                  <span className="ml-2">Pin</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default SideNav;

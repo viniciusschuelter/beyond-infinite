@@ -1,20 +1,12 @@
 import React, { useEffect } from 'react';
-import { connect, ConnectedProps } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { LogoutIcon } from './Header.styles';
 import { PATH } from 'src/constants/paths';
-import { logout, toggleSideNav } from '../../App.actions';
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = {
-  logout,
-  toggleSideNav
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-type Props = ConnectedProps<typeof connector>;
+interface Props {
+  logout?;
+  toggleSideNav?;
+}
 
 const Header = (props: Props) => {
   const { logout, toggleSideNav } = props;
@@ -60,4 +52,4 @@ const Header = (props: Props) => {
   );
 };
 
-export default connector(Header);
+export default Header;
