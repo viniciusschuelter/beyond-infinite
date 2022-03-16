@@ -1,5 +1,6 @@
 export const PATH = {
   HOME: '/',
-  PRODUCT: '/product',
+  SPACE: '/space',
+  CONTACT: '/contact',
   LOGIN: '/login'
 };
