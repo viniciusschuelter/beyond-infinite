@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MainLayout from 'src/layouts/MainLayout';
-import { getDailySpacePhoto } from '../../apis/space.api';
+import { getSpaceDailyPhoto } from '../../apis/space.api';
 import { SpaceModel } from '../../models/space.model';
 
 const initialDailyPhoto: SpaceModel = {
@@ -12,7 +12,7 @@ export default function Home() {
   const [dailyPhoto, setDailyPhoto] = useState(initialDailyPhoto);
 
   useEffect(() => {
-    getDailySpacePhoto().then((result: SpaceModel) => {
+    getSpaceDailyPhoto().then((result: SpaceModel) => {
       setDailyPhoto(result);
     });
   }, []);
