@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import SideNav from '../components/SideNav/SideNav';
-import Header from '../components/Header/Header';
 
 interface Props {
   children: ReactNode;
@@ -9,11 +8,11 @@ interface Props {
 export default function MainLayout(props: Props) {
   const { children } = props;
   return (
-    <div className="wrapper d-flex align-items-stretch">
+    <div className="wrapper flex flex-col items-stretch h-full">
       <SideNav />
-      <main className="flex-grow-1 mw-100 overflow-auto min-vh-100">
+      <main className="flex-grow-1 mw-full overflow-auto h-full">
         {/*<Header />*/}
-        <div className="content mt-3 p-3">{children}</div>
+        <div className="content h-full">{children}</div>
       </main>
     </div>
   );

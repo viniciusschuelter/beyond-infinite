@@ -26,19 +26,21 @@ export default function Home() {
 
   return (
     <MainLayout>
-      <h2 className="mb-4">Home</h2>
       <img style={bgImage} src={dailyPhoto.url} />
       {dailyPhoto.title?.length && (
-        <Typewriter
-          onInit={(typewriter) => {
-            typewriter
-              .typeString(dailyPhoto.title + '<br>')
-              .pauseFor(1000)
-              .typeString(dailyPhoto.explanation || '')
-              .start();
-          }}
-          options={{ wrapperClassName: 'text-xl font-bold text-white' }}
-        />
+        <div className="container flex items-center mx-auto h-full">
+          <Typewriter
+            onInit={(typewriter) => {
+              typewriter
+                .typeString(dailyPhoto.title + '<br>')
+                .pauseFor(1000)
+                .changeDelay(20)
+                .typeString(dailyPhoto.explanation || '')
+                .start();
+            }}
+            options={{ wrapperClassName: 'text-xl font-bold text-white', delay: 50 }}
+          />
+        </div>
       )}
     </MainLayout>
   );
