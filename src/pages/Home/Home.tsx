@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <MainLayout>
-      <img style={bgImage} src={dailyPhoto.url} />
+      <img style={bgImage} src={dailyPhoto.hdurl} />
       {dailyPhoto.title?.length && (
         <div className="container flex items-center mx-auto h-full">
           <Typewriter

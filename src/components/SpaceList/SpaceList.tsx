@@ -18,7 +18,11 @@ const SpaceList = () => {
     <SpaceItem spaceItem={spaceItem} key={spaceItem.title} />
   ));
 
-  return <>{spaceListRendered}</>;
+  return (
+    <div className="container mx-auto">
+      <div className="flex flex-wrap -mx-3 lg:-mx-6">{spaceListRendered}</div>
+    </div>
+  );
 };
 
 export default SpaceList;
