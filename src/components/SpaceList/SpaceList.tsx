@@ -7,10 +7,13 @@ const initialSpaceList: SpaceModel[] = [];
 
 const SpaceList = () => {
   const [spaceList, setSpaceList] = useState(initialSpaceList);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     getSpaceListPhoto().then((result: SpaceModel[]) => {
       setSpaceList(result);
+      setIsLoading(false);
     });
   }, []);
 
